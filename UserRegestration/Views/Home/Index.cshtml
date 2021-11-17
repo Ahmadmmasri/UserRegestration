@@ -1,0 +1,144 @@
+﻿@model UserRegestration.Models.ViewModels.modeslLIst
+@using UserRegestration.Resources;
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>From</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <link href="~/css/CSSPage.css" rel="stylesheet" />
+</head>
+
+
+
+
+
+
+<body>
+    <div id="absoluteCenteredDiv">
+        <img src="https://mostaql.hsoubcdn.com/uploads/640921-FF8Cb-1594626836-5f0c131440975.jpg" width="300" height="200" />
+
+        <form action="Home/Add" method="post" name="Regestration" enctype="multipart/form-data">
+            <div class="box">
+                <h1>@AssessmeentResource.Name</h1>
+                <input class="username" name="username" id="username" type="text" placeholder="الرجاء إدخال الإسم">
+                <h1>@AssessmeentResource.Mobile</h1>
+                <input class="usernumber" name="usernumber" id="usernumber" type="number" placeholder="الرجاء إدخال رقم الهاتف">
+                <h1>@AssessmeentResource.Email</h1>
+                <input class="useremail" name="useremail" id="useremail" type="email" placeholder="الرجاء إدخال البريد الالكتروني">
+
+                <button type="button" class="btn button" data-toggle="modal" data-target="#exampleModal" id="ModalButton">
+                    @AssessmeentResource.Send
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade now" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="bank-from">
+                        <div class="bank_table">
+                            <div class="row">
+                                <div class="col-12 col-md-4 col-xl-4">
+                                    <div>
+                                        <label>@AssessmeentResource.FirstDialogpargrpah</label>
+                                        <div class="btn-group" id="group1" role="group" aria-label="">
+                                            @{
+
+                                                foreach (var item in Model.offer)
+                                                {
+
+                                                    <button type="button" class="btn btn-secondary mr-3 mb-2" id="@item.Id" style="width:150px">@item.OfferName</button>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" style="width: 100%; background: #8B008B" id="saveChanges">@AssessmeentResource.Send</button>
+                    <a href="www.google.com" id="showdialog" style="display:none" data-toggle="modal" data-target="#exampleModal2"></a>
+                </div>
+                <div style="width: 100%; padding: 7px;">
+                    <button type="button" style="float: right;" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="bank-from">
+                        <div class="bank_table">
+                            <div class="row">
+                                <div class="col-12 col-md-4 col-xl-4">
+                                    <div>
+                                        <form name="offerFrom" action="Index" method="post">
+
+                                            <label>@AssessmeentResource.SecondDialogpargrpah</label>
+                                            <div class="btn-group" id="group2" role="group" aria-label="">
+                                                @{
+
+                                                    foreach (var item in Model.service)
+                                                    {
+
+                                                        <button type="button" class="btn btn-secondary mr-3 mb-2" id="@item.Id" style="width:150px">@item.seviceName</button>
+                                                        <input type="hidden" id="btnValue" value="" />
+                                                    }
+                                                }
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; padding: 7px;">
+                    <button type="button" style="float: right;" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/Jsproject.js"></script>
